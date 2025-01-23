@@ -1,0 +1,483 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>demoProgrammingLanguage</name>
+    </assembly>
+    <members>
+        <member name="T:demoProgrammingLanguage.Circle">
+            <summary>
+            About
+            -----
+                   circle class is used to draw circle, whenever we need to draw a circle we ask circle object from shapeFactory class
+                   and draw circle using drawTo and moveTo methods, it extends Shape abstract class, which help us to achieve dynamic polymorphism
+                   for factory pattern
+            </summary>
+        </member>
+        <member name="M:demoProgrammingLanguage.Circle.drawTo(System.Drawing.Graphics,System.Boolean)">
+            <summary>
+            About
+            ------
+                  we call this method whenever user calls circle method with proper params,this then draws
+                  the circle. If fill is false then it only draws outline of circle else fills the circle
+            </summary>
+            <param name="g">Graphs object that we use to draw in our picture box</param>
+            <param name="fill"> bool value to spcecify whether to fill the shape or not</param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Circle.set(System.Drawing.Color,System.Int32[])">
+            <summary>
+            About
+            -----
+                set method initializes the colour and initial point where the circle should be drawn
+                if no intial color is give then it draws black color
+                if no initial point are given the it drawn from the top left conor(point 0,0)
+            </summary>
+            <param name="colour"> colour with which we want to draw our circle</param>
+            <param name="list"> list of parameters that we need to draw circle, in this case radius</param>
+        </member>
+        <member name="T:demoProgrammingLanguage.Condition">
+            <summary>
+            About
+            -----
+                It is a singleton class which will only have one object throughout the execution of program
+                , when user inputs 'if' for running if condition then we use this class in Form1.
+                
+            Variables
+            --------
+                 * conditionOperator, condition1, condition2 -> this command will keep the state in running command
+                 * runIfConditionInstance -> static variable that will store the object of Condition if created else it will store null
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:demoProgrammingLanguage.Condition.GetInstance" -->
+        <member name="M:demoProgrammingLanguage.Condition.runIfCondition(System.Collections.ArrayList,System.Collections.Specialized.ListDictionary,System.Int32,System.String[],System.Int32,System.Int32,System.Drawing.Color,System.Boolean,System.Windows.Forms.PictureBox,System.Int32,System.Windows.Forms.TextBox)">
+            <summary>
+             About
+             -----
+                  runIfCondition method is created to acheive separation of concern and loose coupling.
+                  here we do all the task related to if condition
+            </summary>
+            <param name="runningCommand"> arraylist sent from runCommand method of Form1 class which contains runningCommands </param>
+            <param name="variableList"> list of variables with its value is sent from runCommand method of Form1 class</param>
+            <param name="whereIsEndif"> upto which line is if condition effective, position of endif </param>
+            <param name="command"></param>
+            <param name="positionX"> x coordinate</param>
+            <param name="positionY"> y coordinate</param>
+            <param name="colour"> color of pen </param>
+            <param name="fill"> whether to fill shape or not </param>
+            <param name="pictureBox1"> where shape are drawn </param>
+            <param name="i">position of if command</param>
+            <param name="textBox2"> </param>
+        </member>
+        <member name="T:demoProgrammingLanguage.Loop">
+            <summary>
+            About
+            -----
+                If user give 'while' command then we use this class for acheiving loop related operation
+                it has runWhileLoop method which is called by Form1 when program encounters while command
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:demoProgrammingLanguage.Loop.GetInstance" -->
+        <member name="M:demoProgrammingLanguage.Loop.runWhileLoop(System.Collections.ArrayList,System.Collections.Specialized.ListDictionary,System.Int32,System.String[],System.Int32,System.Int32,System.Drawing.Color,System.Boolean,System.Windows.Forms.PictureBox,System.Int32,System.Windows.Forms.TextBox)">
+            <summary>
+             About
+             -----
+                  runWhileLoop method is created to acheive separation of concern and loose coupling.
+                  here we do all the task related to while loop
+            </summary>
+            <param name="runningCommand"> arraylist sent from runCommand method of Form1 class which contains runningCommands </param>
+            <param name="variableList"> list of variables with its value is sent from runCommand method of Form1 class</param>
+            <param name="whereIsEndif"> upto which line is if condition effective, position of endif </param>
+            <param name="command"></param>
+            <param name="positionX"> x coordinate</param>
+            <param name="positionY"> y coordinate</param>
+            <param name="colour"> color of pen </param>
+            <param name="fill"> whether to fill shape or not </param>
+            <param name="pictureBox1"> where shape are drawn </param>
+            <param name="i">position of if command</param>
+            <param name="textBox2"> </param>
+        </member>
+        <member name="T:demoProgrammingLanguage.Form1">
+            <summary>
+            About
+            -----
+                Whenever we create a form using windows form in .NET framework, we will automatically get this class
+                when we add textBox or pictureBox then under the hood, all this are instantiated. 
+            </summary>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.flashColorThread(System.String[],System.Boolean)">
+            <summary>
+            About
+            -----
+                 flashColorThread methods runs whenever execute button is clicked, to flash color at border of picture box
+                 three color combination needs to be execute so we will have three threads that will run in a syncronized
+                 manner
+            </summary>
+            <param name="colours"> string of colors that should flash</param>
+            <param name="running"> boolean value if user wants to run the threads</param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.button1_Click(System.Object,System.EventArgs)">
+            <summary>
+            About
+            -----
+                  Whenever execute button is clicked from UI, program flows here, first of all it splits the user input 
+                  and stores it in string array. Since each object in this array is a particular command, this command is then sent to
+                  validation class for validating command syntax and its related parameters
+            </summary>
+            <param name="sender"> automtic generated params when using windows.forms</param>
+            <param name="e"> automtic generated params when using windows.forms</param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.run_command(System.String[])">
+             <summary>
+             About
+             -----
+                 Once all the commands and its related parameters are validated the program flows here
+                 It runs commands one by one in a loop. runningCommand saves the current command and its paramters
+                 runningCommand is an ArrayList so it checks which command are we running in using Contains method.
+            <example>
+                 if the user inputs
+                 
+                 radius = 10
+                 circle radius
+                 
+                 then our command[0] array has radius = 10
+                 and our runningCommand has [radius,=,10]
+                 
+                 now our program checks
+                 if(runningCommand[i] == "radius") which we have so the program flows this condition
+                 and saves the variable radius with its corresponding value using ListDictionary collection
+                 
+             
+             </example>
+             </summary>
+             <param name="command"></param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.redToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            About
+            -----
+                gives red color when clicked red from tools->pen
+                
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.greenToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            About
+            -----
+                gives red green when clicked blue from tools->pen
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.blueToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            About
+            -----
+                gives blue color when clicked blue from tools->pen
+                 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.defaultToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            About
+            -----
+                gives black color when clicked default from tools->pen
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.onToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            About
+            -----
+                sets the fill variable to true when selected on from tools->fill
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.saveToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            About
+            -----
+                 if save option selected from options than a dialouge box is opened 
+                 and let us to choose where to save our text file
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.openToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            About
+            -----
+                  if open option selected from options than a dialouge box is opened to 
+                  choose which file we want to select
+            </summary>
+            <param name="sender"> automatic generated</param>
+            <param name="e"> automatic generated</param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.offToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            About
+            -----
+                 sets the fill variable to false when selected on from tools->fill
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:demoProgrammingLanguage.Form1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Form1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:demoProgrammingLanguage.Method">
+            <summary>
+            About
+            -----
+                It is a singleton class which will only have one object throughout the execution of program
+                , when user inputs 'method' for running method.
+                
+            Variables
+            --------
+                 * runMethodInstance -> static variable that will store the object of Method if created else it will store null
+                 * repititiveCircleTriangleRectangle -> object of class that runs repititve codes for circle triangle and rectangle
+                 * runCommand -> all commands that needs to run inside method
+                 * commandWithRespectiveMethod is a dictionary that stores method name as key and its value is all the commands inside method
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:demoProgrammingLanguage.Method.GetInstance" -->
+        <!-- Badly formed XML comment ignored for member "M:demoProgrammingLanguage.Method.defineMethod(System.Collections.ArrayList,System.Collections.Specialized.ListDictionary,System.String[],System.Int32,System.Int32)" -->
+        <member name="M:demoProgrammingLanguage.Method.runMethod(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Windows.Forms.TextBox,System.Int32,System.Int32,System.Drawing.Color,System.Boolean,System.Windows.Forms.PictureBox,System.Collections.Specialized.ListDictionary)">
+            <summary>
+            About
+            -----
+                 When user wants to call and run a method we call runMethod,
+                 it looks for the name of the method and runs its specific method one by one
+            </summary>
+            <param name="runningMethod"> name of the method that the user wants to run</param>
+            <param name="commandsOfMethod"> has commands inside of method that the user is calling</param>
+            <param name="textBox2"> for testing purpose </param>
+            <param name="positionX"> position of x </param>
+            <param name="positionY">position of y </param>
+            <param name="colour"> pen colour</param>
+            <param name="fill"> bool value, if user wants to fill the diagram then it fills the diagram</param>
+            <param name="pictureBox1"> picture box where images are drawn</param>
+            <param name="variableList"> variables used while running program</param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:demoProgrammingLanguage.Rectangle">
+            <summary>
+            About
+            -----
+                   Rectangle class is used to draw Rectangle, whenever we need to draw a Rectangle we ask Rectangle object from shapeFactory class
+                   and draw Rectangle using drawTo and moveTo methods, it extends Shape abstract class, which help us to achieve dynamic polymorphism
+                   for factory pattern
+            </summary>
+        </member>
+        <member name="M:demoProgrammingLanguage.Rectangle.drawTo(System.Drawing.Graphics,System.Boolean)">
+            <summary>
+            About
+            ------
+                  we call this method whenever user calls rectangle method with proper params,this then draws
+                  the rectangle. If fill is false then it only draws outline of rectangle else fills the rectangle
+            </summary>
+            <param name="g">Graphs object that we use to draw in our picture box</param>
+            <param name="fill"> bool value to spcecify whether to fill the shape or not</param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Rectangle.set(System.Drawing.Color,System.Int32[])">
+            <summary>
+            About
+            -----
+                set method initializes the colour and initial point where the rectangle should be drawn
+                if no intial color is give then it draws black color
+                if no initial point are given the it drawn from the top left conor(point 0,0)
+            </summary>
+            <param name="colour"> colour with which we want to draw our rectangle</param>
+            <param name="list"> list of parameters that we need to draw rectangle, in this case height, width</param>
+        </member>
+        <member name="T:demoProgrammingLanguage.Repititve">
+            <summary>
+            About
+            -----
+                Repititive class is created to make our code cleaner and help reduce complexity. Previosuly this program was running same code again and again
+                repedeatly now this class has separate code for drawing triangle, circle and rectangle. This also has repititiveVariableCommands to use same
+                code for working with variable related tasks. It is singleton class i.e same object will be used throughout our program
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:demoProgrammingLanguage.Repititve.GetInstance" -->
+        <member name="M:demoProgrammingLanguage.Repititve.repititveCircleCommands(System.Collections.Specialized.ListDictionary,System.Collections.ArrayList,System.Int32,System.Int32,System.Drawing.Color,System.Boolean,System.Windows.Forms.PictureBox)">
+            <summary>
+            About
+            -----
+                  This method runs circle command, whenever our program finds circle command then we call this method to draw circle
+                  This works for every context, as Loop class and Condition class also use this method, this can handle looping and condition related
+                  circle commands
+            Parameters
+            ----------
+                   variableList contains all the variables used in our running program, runningCommand contains the current command, positionX and positionY
+                   is the position of cursor, colour is used for pen colour, fill tells whether to fill shape or not, and pictureBox1 will draw
+                   picture in the PictureBox
+            </summary>
+            <param name="variableList">list of variables with its value is sent from runCommand method of Form1 class</param>
+            <param name="runningCommand">arraylist sent from runCommand method of Form1 class which contains runningCommands </param>
+            <param name="positionX"> x coordinate </param>
+            <param name="positionY"> y coordinate</param>
+            <param name="colour"> color of pen</param>
+            <param name="fill"> whether to fill shape or not</param>
+            <param name="pictureBox1"> where shape are drawn</param>
+        </member>
+        <member name="T:demoProgrammingLanguage.Shape">
+            <summary>
+            About
+            -----
+                  Abstract class that implements Shapes interface, it help us use factory pattern
+                  also it has some methods that help initialize our rectangle, triangle and circle class
+                  set method initializes them and help us achieve separation of concern
+                  
+            reference variables
+            -------------------
+                        color -> shape's colour
+                        initialX, initialY -> initial point for x and y
+            constructor
+            -----------
+                        only default construtor is there, set is used for initializing our shapes
+                        
+            </summary>
+        </member>
+        <member name="M:demoProgrammingLanguage.Shape.set(System.Drawing.Color,System.Int32[])">
+            <summary>
+            About
+            -----
+                set is declared as virtual so it can be overridden by a more specific child version
+                but is here so it can be called by that child version to do the generic stuff
+                note the use of the param keyword to provide a variable parameter
+                list to cope with some shapes having more setup information than others  
+            
+            </summary>
+            <param name="colour"> colour of pen that will draw shape</param>
+            <param name="list"> list of parameters thet are used for drawing shape</param>
+        </member>
+        <member name="M:demoProgrammingLanguage.Shape.drawTo(System.Drawing.Graphics,System.Boolean)">
+            <summary>
+            About
+            -----
+                  the two methods below are from the Shapes interface
+                  here we are passing on the obligation to implement them to the derived classes by declaring them as abstract
+                  any derrived class must implement drawTo and moveTo method
+            </summary>
+            <param name="g"> graphics instantiation to draw shape in picture box</param>
+            <param name="fill"> bool value to specify whether to fill the shapes</param>
+        </member>
+        <member name="T:demoProgrammingLanguage.ShapeFactory">
+            <summary>
+            About
+            -----
+                This factory generates the object and provide us whenever we need one via dynamic polymorphism,
+                It help us mantain loose coupling between classes
+                Factory classes helps us in memory management and also makes our program a lot clean by, 
+                producing object only at the time we need it.
+            </summary>
+        </member>
+        <member name="M:demoProgrammingLanguage.ShapeFactory.getShape(System.String)">
+            <summary>
+            About
+            -----
+                It is the factory that produces object of circle, rectagle and triangle.
+                We should type the type of object that we want as argument.
+            </summary>
+            <param name="shapeType"></param>
+            <returns> return object asked by other components of our program </returns>
+        </member>
+        <member name="T:demoProgrammingLanguage.Triangle">
+            <summary>
+            About
+            -----
+                   Triangle class is used to draw Triangle, whenever we need to draw a Triangle we ask Triangle object from shapeFactory class
+                   and draw Triangle using drawTo and moveTo methods, it extends Shape abstract class, which help us to achieve dynamic polymorphism
+                   for factory pattern
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:demoProgrammingLanguage.Triangle.drawTo(System.Drawing.Graphics,System.Boolean)" -->
+        <member name="M:demoProgrammingLanguage.Triangle.set(System.Drawing.Color,System.Int32[])">
+            <summary>
+            About
+            -----
+                set method initializes the colour and initial point where the triangle should be drawn
+                if no intial color is give then it draws black color
+                if no initial point are given the it drawn from the top left conor(point 0,0)
+            </summary>
+            <param name="colour"> colour with which we want to draw our triangle</param>
+            <param name="list"> list of parameters that we need to draw triangle, in this case side a, b, c</param>
+        </member>
+        <member name="T:demoProgrammingLanguage.Validation">
+            <summary>
+            About
+            ------
+                 validation class is used for validating our command and showing error when encountered, 
+                 it has two method checkDrawingCommandError and checkParamsError.
+                 
+            reference variables
+            ----------
+                * commandSyntax save all the command passed and help us check them one bye one
+                * parameters save all the command passed and also the parameters passed with them which help us check them one bye one
+                * command that we get in our constructor is saved in command variable
+                * commands that our program supports will be stored here and they will be checked one by ine
+            
+            constructor
+            ----------
+                * this constructor takes an array of string as parameter and makes our validation class ready for validation
+            </summary>
+        </member>
+        <member name="M:demoProgrammingLanguage.Validation.checkDrawingCommandError">
+            <summary>
+            checks command passed by user, since this is demo programming language there are limited commands that we can use
+            if user doesnt write the specified command or keyword then our program throws error
+            Commands accepted by our program:
+            *moveTo, drawTo, cirle, rectangle, triangle, if, while radius, height, width, endif, count, while, endloop, colour, drawMethod
+            </summary>
+            <returns> returns validation error regarding command syntax and name if found else returns empty string</returns>
+        </member>
+        <member name="M:demoProgrammingLanguage.Validation.checkParamsError">
+            <summary>
+            checks the parameter send by user when writing program, it checks each parameter individually for 
+            all the commands passed in, also if they are assignment operation then it checks the syntax
+            </summary>
+            <returns>returns error message if found any else return empty string</returns>
+        </member>
+        <member name="T:demoProgrammingLanguage.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:demoProgrammingLanguage.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:demoProgrammingLanguage.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

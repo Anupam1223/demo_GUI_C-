@@ -1,0 +1,11 @@
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\obj\Debug\demoProgrammingLanguage.csproj.SuggestedBindingRedirects.cache
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\obj\Debug\demoProgrammingLanguage.Form1.resources
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\obj\Debug\demoProgrammingLanguage.Properties.Resources.resources
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\obj\Debug\demoProgrammingLanguage.csproj.GenerateResource.cache
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\obj\Debug\demoProgrammingLanguage.csproj.CoreCompileInputs.cache
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\bin\Debug\demoProgrammingLanguage.exe.config
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\bin\Debug\demoProgrammingLanguage.exe
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\bin\Debug\demoProgrammingLanguage.pdb
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\obj\Debug\demoProgrammingLanguage.exe
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\obj\Debug\demoProgrammingLanguage.pdb
+F:\BachelorsDegree\C#\component-i-assesment\demoProgrammingLanguage\demoProgrammingLanguage\obj\Debug\demoProgrammingLanguage.csproj.AssemblyReference.cache
